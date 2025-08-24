@@ -20,6 +20,12 @@ function App() {
 
       {/* Wildcard fallback route */}
       <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/" element={<Navigate to="/" />} />
+      <Route
+        path="/*"
+        element={!isAuthenticated ? <AuthPage /> : <Navigate to="/" />}
+      />
+
     </Routes>
   );
 }
