@@ -15,16 +15,11 @@ function App() {
       />
       <Route
         path="/"
-        element={isAuthenticated ? <ChatPage /> : <Navigate to="/" />}
+        element={isAuthenticated ? <ChatPage /> : <Navigate to="/auth" />}
       />
 
       {/* Wildcard fallback route */}
       <Route path="*" element={<Navigate to="/" />} />
-      <Route path="/" element={<Navigate to="/" />} />
-      <Route
-        path="/*"
-        element={!isAuthenticated ? <AuthPage /> : <Navigate to="/" />}
-      />
 
     </Routes>
   );
