@@ -16,7 +16,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 # Replace with your actual frontend URL for production
 origins = [
     "http://localhost:5173",
-    "https://your-frontend-url.onrender.com",
+    "https://spendwise-ai.onrender.com",
 ]
 
 app.add_middleware(
