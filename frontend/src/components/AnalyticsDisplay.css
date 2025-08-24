@@ -2,12 +2,15 @@
   padding: 1rem;
   border-radius: 10px;
   background-color: var(--bg-color);
+  width: auto;
+  height: auto;
 }
 
 .analytics-container h4 {
   margin-top: 0;
   text-align: center;
   color: var(--text-color);
+  font-size: 1.3rem;
 }
 
 .analytics-content {
@@ -15,28 +18,39 @@
   flex-wrap: wrap;
   gap: 2rem;
   align-items: flex-start;
+  width: auto;
+  height: auto;
 }
 
 .analytics-table-wrapper {
-  flex: 1;
-  min-width: 200px;
+  flex: 0 1 auto;
+  min-width: max-content;
 }
 
 .analytics-chart-wrapper {
-  flex: 1;
-  min-width: 250px;
-}
+  flex: 1;                /* let chart fill remaining space */
+  min-width: 400px;       /* give it some base width */
+  height: 400px;          /* required for Recharts */
+  margin-top: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+} 
 
 .analytics-table {
-  width: 100%;
+  width: auto;
   border-collapse: collapse;
+  table-layout: auto;
+  margin: 10px;
+  border: 2px solid black;   /* outer border */
 }
 
 .analytics-table th,
 .analytics-table td {
-  padding: 8px 12px;
-  border: 1px solid var(--border-color);
+  padding: 10px 14px;
+  border: 1px solid black;   /* black grid lines */
   text-align: left;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 
 .analytics-table th {
@@ -44,6 +58,8 @@
 }
 
 /* Style for recharts text */
-.recharts-text, .recharts-legend-item-text {
+.recharts-text,
+.recharts-legend-item-text {
   fill: var(--text-color) !important;
+  font-size: 0.95rem !important;
 }

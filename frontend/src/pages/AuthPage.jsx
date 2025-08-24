@@ -11,8 +11,8 @@ const AuthPage = () => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
-        <h2>{isLogin ? 'Welcome Back' : 'Create Account'}</h2>
+      <div className="auth-card glass-effect">
+        <h2>{isLogin ? 'SpendWiseAI' : 'Create Account'}</h2>
         <AuthForm isLogin={isLogin} />
         <p className="toggle-text">
           {isLogin ? "Don't have an account?" : 'Already have an account?'}

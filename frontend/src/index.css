@@ -1,62 +1,70 @@
+/* Import a clean, modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 :root {
-  --font-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  
+  /* Dark Theme (Default) */
+  --text-primary: #e4e6eb;
+  --text-secondary: #b0b3b8;
+  --bg-primary: #121212;
+  --bg-glass: rgba(30, 30, 30, 0.5); /* Semi-transparent dark glass */
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --accent-primary: #64ffda;
+  --accent-text: #000000;
+  --user-bubble: #0084ff;
+  --bot-bubble: #3a3b3c;
+
   /* Light Theme */
-  --bg-color-light: #f8f9fa;
-  --text-color-light: #212529;
-  --card-bg-light: #ffffff;
-  --border-color-light: #dee2e6;
-  --primary-color-light: #007bff;
-  --primary-text-light: #ffffff;
-  --user-bubble-light: #007bff;
-  --bot-bubble-light: #e9ecef;
-  --bot-bubble-text-light: #495057;
-
-  /* Dark Theme */
-  --bg-color-dark: #121212;
-  --text-color-dark: #e0e0e0;
-  --card-bg-dark: #1e1e1e;
-  --border-color-dark: #424242;
-  --primary-color-dark: #64ffda;
-  --primary-text-dark: #000000;
-  --user-bubble-dark: #64ffda;
-  --bot-bubble-dark: #333333;
-  --bot-bubble-text-dark: #e0e0e0;
+  --text-primary-light: #1c1e21;
+  --text-secondary-light: #606770;
+  --bg-primary-light: #f0f2f5;
+  --bg-glass-light: rgba(240, 242, 245, 0.6); /* Semi-transparent light glass */
+  --border-glass-light: rgba(0, 0, 0, 0.1);
+  --accent-primary-light: #0062E0;
+  --user-bubble-light: #0084ff;
+  --bot-bubble-light: #e4e6eb;
 }
 
-html.dark {
-  --bg-color: var(--bg-color-dark);
-  --text-color: var(--text-color-dark);
-  --card-bg: var(--card-bg-dark);
-  --border-color: var(--border-color-dark);
-  --primary-color: var(--primary-color-dark);
-  --primary-text: var(--primary-text-dark);
-  --user-bubble: var(--user-bubble-dark);
-  --bot-bubble: var(--bot-bubble-dark);
-  --bot-bubble-text: var(--bot-bubble-text-dark);
-}
-
-html:not(.dark) {
-  --bg-color: var(--bg-color-light);
-  --text-color: var(--text-color-light);
-  --card-bg: var(--card-bg-light);
-  --border-color: var(--border-color-light);
-  --primary-color: var(--primary-color-light);
-  --primary-text: var(--primary-text-light);
+html.light {
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --bg-primary: var(--bg-primary-light);
+  --bg-glass: var(--bg-glass-light);
+  --border-glass: var(--border-glass-light);
+  --accent-primary: var(--accent-primary-light);
   --user-bubble: var(--user-bubble-light);
   --bot-bubble: var(--bot-bubble-light);
-  --bot-bubble-text: var(--bot-bubble-text-light);
-}
-
-body {
-  margin: 0;
-  font-family: var(--font-sans);
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  background-image: url('https://images.unsplash.com/photo-1554034483-04fda0d3507b?q=80&w=2070');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden; /* Prevent body scroll */
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Helper Class for Glassmorphism --- */
+.glass-effect {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }

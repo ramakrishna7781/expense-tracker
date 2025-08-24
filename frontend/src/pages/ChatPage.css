@@ -2,13 +2,18 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: var(--bg-color);
+  width: 100vw;
+  border-radius: 0;
+  overflow: hidden;
 }
 
+@media (max-width: 800px) {
+  .chat-page {
+    border-radius: 0; /* Full screen on mobile */
+  }
+}
 .chat-area {
-  flex: 1;
+  flex-grow: 1;
   overflow-y: auto;
   padding: 1rem;
   display: flex;
@@ -17,7 +22,7 @@
 }
 
 .loader-container {
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20px;
 }

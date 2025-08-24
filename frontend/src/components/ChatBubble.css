@@ -2,7 +2,7 @@
   display: flex;
   align-items: flex-end;
   gap: 10px;
-  max-width: 80%;
+  max-width: 85%;
 }
 
 .bubble-container.user {
@@ -18,40 +18,43 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: var(--border-color);
+  background-color: rgba(180, 150, 255, 0.25); /* frosted purple */
+  backdrop-filter: blur(6px) saturate(180%);
+  -webkit-backdrop-filter: blur(6px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .bubble {
   padding: 0.8rem 1.2rem;
   border-radius: 20px;
   line-height: 1.5;
+  color: var(--text-primary);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.bubble p {
-    margin: 0;
-    white-space: pre-wrap; /* To respect newlines in the initial message */
+.bubble p, .bubble li, .bubble strong {
+  margin: 0;
+  white-space: pre-wrap;
 }
+
 .bubble ul {
-    padding-left: 20px;
-    margin: 10px 0;
-}
-.bubble li {
-    margin-bottom: 5px;
-}
-.expense-item-card {
-    border-top: 1px solid var(--border-color);
-    padding-top: 10px;
-    margin-top: 10px;
+  padding-left: 20px;
+  margin: 10px 0 0;
 }
 
+/* User bubble: frosted sky blue */
 .bubble-container.user .bubble {
-  background-color: var(--user-bubble);
-  color: var(--primary-text);
+  background-color: rgba(0, 245, 180, 0.25); /* sky blue glass */
   border-bottom-right-radius: 5px;
 }
 
+/* Bot bubble: frosted light purple/pink */
 .bubble-container.bot .bubble {
-  background-color: var(--bot-bubble);
-  color: var(--bot-bubble-text);
+  background-color: rgba(154, 116, 250, 0.25); /* light purple glass */
   border-bottom-left-radius: 5px;
 }

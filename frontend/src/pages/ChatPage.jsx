@@ -86,7 +86,7 @@ const ChatPage = () => {
   };
 
   return (
-    <div className="chat-page">
+    <div className="chat-page glass-effect">
       <Header />
       <div className="chat-area">
         {messages.map((msg, index) => (
