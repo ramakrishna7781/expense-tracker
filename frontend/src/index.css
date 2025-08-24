@@ -1,0 +1,62 @@
+:root {
+  --font-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  /* Light Theme */
+  --bg-color-light: #f8f9fa;
+  --text-color-light: #212529;
+  --card-bg-light: #ffffff;
+  --border-color-light: #dee2e6;
+  --primary-color-light: #007bff;
+  --primary-text-light: #ffffff;
+  --user-bubble-light: #007bff;
+  --bot-bubble-light: #e9ecef;
+  --bot-bubble-text-light: #495057;
+
+  /* Dark Theme */
+  --bg-color-dark: #121212;
+  --text-color-dark: #e0e0e0;
+  --card-bg-dark: #1e1e1e;
+  --border-color-dark: #424242;
+  --primary-color-dark: #64ffda;
+  --primary-text-dark: #000000;
+  --user-bubble-dark: #64ffda;
+  --bot-bubble-dark: #333333;
+  --bot-bubble-text-dark: #e0e0e0;
+}
+
+html.dark {
+  --bg-color: var(--bg-color-dark);
+  --text-color: var(--text-color-dark);
+  --card-bg: var(--card-bg-dark);
+  --border-color: var(--border-color-dark);
+  --primary-color: var(--primary-color-dark);
+  --primary-text: var(--primary-text-dark);
+  --user-bubble: var(--user-bubble-dark);
+  --bot-bubble: var(--bot-bubble-dark);
+  --bot-bubble-text: var(--bot-bubble-text-dark);
+}
+
+html:not(.dark) {
+  --bg-color: var(--bg-color-light);
+  --text-color: var(--text-color-light);
+  --card-bg: var(--card-bg-light);
+  --border-color: var(--border-color-light);
+  --primary-color: var(--primary-color-light);
+  --primary-text: var(--primary-text-light);
+  --user-bubble: var(--user-bubble-light);
+  --bot-bubble: var(--bot-bubble-light);
+  --bot-bubble-text: var(--bot-bubble-text-light);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+}

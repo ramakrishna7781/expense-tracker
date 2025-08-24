@@ -1,0 +1,57 @@
+.bubble-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 80%;
+}
+
+.bubble-container.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.bubble-container.bot {
+  align-self: flex-start;
+}
+
+.bot-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+}
+
+.bubble {
+  padding: 0.8rem 1.2rem;
+  border-radius: 20px;
+  line-height: 1.5;
+}
+
+.bubble p {
+    margin: 0;
+    white-space: pre-wrap; /* To respect newlines in the initial message */
+}
+.bubble ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+.bubble li {
+    margin-bottom: 5px;
+}
+.expense-item-card {
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.bubble-container.user .bubble {
+  background-color: var(--user-bubble);
+  color: var(--primary-text);
+  border-bottom-right-radius: 5px;
+}
+
+.bubble-container.bot .bubble {
+  background-color: var(--bot-bubble);
+  color: var(--bot-bubble-text);
+  border-bottom-left-radius: 5px;
+}

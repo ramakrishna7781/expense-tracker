@@ -1,0 +1,15 @@
+# Python  Backend
+.venv
+__pycache__
+.pyc
+.env
+
+# Node  Frontend
+frontendnode_modules
+frontenddist
+frontend.env.local
+frontend.env..local
+
+# IDE  OS specific
+.vscode
+.DS_Store

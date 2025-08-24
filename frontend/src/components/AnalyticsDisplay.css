@@ -1,0 +1,49 @@
+.analytics-container {
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--bg-color);
+}
+
+.analytics-container h4 {
+  margin-top: 0;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.analytics-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.analytics-table-wrapper {
+  flex: 1;
+  min-width: 200px;
+}
+
+.analytics-chart-wrapper {
+  flex: 1;
+  min-width: 250px;
+}
+
+.analytics-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.analytics-table th,
+.analytics-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.analytics-table th {
+  background-color: var(--bot-bubble);
+}
+
+/* Style for recharts text */
+.recharts-text, .recharts-legend-item-text {
+  fill: var(--text-color) !important;
+}
