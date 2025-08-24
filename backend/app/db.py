@@ -1,18 +1,8 @@
-# import os
-# from motor.motor_asyncio import AsyncIOMotorClient
-
-# MONGO_URL = os.getenv("MONGO_URL")
-# DB_NAME = os.getenv("DB_NAME")
-
-# client = AsyncIOMotorClient(MONGO_URL)
-# db = client[DB_NAME]
-
-
-from dotenv import load_dotenv # type: ignore
+from dotenv import load_dotenv
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
 
-# load_dotenv()  # <-- must be called first
+# Load environment variables from backend/.env
 load_dotenv(dotenv_path='backend/.env')
 
 MONGO_URL = os.getenv("MONGO_URL")

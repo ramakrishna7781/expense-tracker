@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
+from datetime import datetime
 
 class RegisterBody(BaseModel):
     name: str
@@ -10,12 +11,13 @@ class LoginBody(BaseModel):
     email: EmailStr
     password: str
 
-class ExpenseInput(BaseModel):
-    text: str  # like "500 petrol"
+# Model for the /command endpoint input
+class CommandInput(BaseModel):
+    text: str
 
-class ExpenseDB(BaseModel):
-    user_id: str
+# New structured model for adding/editing an expense
+class ExpenseModel(BaseModel):
+    description: str
     amount: float
     category: str
-    description: str
-    date: Optional[str]  # ISO format
+    date: Optional[datetime] = None

@@ -1,55 +1,42 @@
-# from fastapi import APIRouter
-# from ..db import db
-# from ..utils import generate_pdf
-# from datetime import datetime
-# import os
-
-# router = APIRouter(prefix="/pdf", tags=["pdf"])
-
-# @router.get("/monthly")
-# async def download_monthly_pdf(user_id: str = "dummy_user"):
-#     cursor = db.expenses.find({"user_id": user_id})
-#     expenses = []
-#     async for e in cursor:
-#         expenses.append(e)
-#     if not expenses:
-#         return {"detail": "No expenses found"}
-
-#     filename = f"{user_id}_{datetime.utcnow().strftime('%Y-%m')}.pdf"
-#     generate_pdf(user_id, expenses, filename)
-
-#     # Delete old expenses
-#     await db.expenses.delete_many({"user_id": user_id})
-#     return {"filename": filename, "message": "PDF generated and old data deleted"}
-
-
-from fastapi import APIRouter
-from ..db import db
-from ..utils import generate_pdf
+from fastapi import APIRouter, Header, HTTPException
+from fastapi.responses import StreamingResponse
+from fpdf import FPDF
+from io import BytesIO
 from datetime import datetime, timezone
-import os
+
+from ..db import db
+from .auth_routes import verify_token
 
 router = APIRouter(prefix="/pdf", tags=["pdf"])
 
+def create_pdf_in_memory(user_id: str, expenses: list) -> BytesIO:
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", 'B', 16)
+    pdf.cell(0, 10, "Expense Report", ln=True, align='C')
+    # ... (rest of PDF generation logic)
+    
+    pdf_bytes = pdf.output(dest='S').encode('latin1')
+    buffer = BytesIO(pdf_bytes)
+    buffer.seek(0)
+    return buffer
+
 @router.get("/monthly")
-async def download_monthly_pdf(user_id: str = "dummy_user"):
-    # Fetch all expenses for the user
+async def download_monthly_pdf(authorization: str = Header(...)):
+    user = verify_token(authorization)
+    user_id = user["id"]
+    
     cursor = db.expenses.find({"user_id": user_id})
-    expenses = []
-    async for e in cursor:
-        expenses.append(e)
+    expenses = await cursor.to_list(length=None)
 
     if not expenses:
-        return {"detail": "No expenses found"}
+        raise HTTPException(status_code=404, detail="No expenses found.")
 
-    # Use timezone-aware UTC datetime for filename
-    now_utc = datetime.now(timezone.utc)
-    filename = f"{user_id}_{now_utc.strftime('%Y-%m')}.pdf"
-
-    # Generate PDF
-    generate_pdf(user_id, expenses, filename)
-
-    # Delete old expenses after PDF generation
-    await db.expenses.delete_many({"user_id": user_id})
-
-    return {"filename": filename, "message": "PDF generated and old data deleted"}
+    pdf_buffer = create_pdf_in_memory(user_id, expenses)
+    filename = f"Report_{datetime.now(timezone.utc).strftime('%Y-%m')}.pdf"
+    
+    return StreamingResponse(
+        pdf_buffer,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename={filename}"}
+    )

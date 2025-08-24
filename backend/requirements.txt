@@ -28,8 +28,7 @@ motor
 passlib[bcrypt]
 python-jose[cryptography]
 pydantic[email]
-requests
 fpdf
 python-dateutil
 python-dotenv
-PyJWT
+google-generativeai
