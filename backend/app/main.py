@@ -1,8 +1,17 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import auth_routes, command_router, expense_routes, pdf_routes
 
 app = FastAPI(title="AI Expense Tracker")
+
+load_dotenv()  # this loads .env from the working directory
+
+MONGO_URL = os.getenv("MONGO_URL")
+DB_NAME = os.getenv("DB_NAME")
+JWT_SECRET = os.getenv("JWT_SECRET")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # Replace with your actual frontend URL for production
 origins = [
