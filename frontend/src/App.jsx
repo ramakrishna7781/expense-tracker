@@ -15,7 +15,7 @@ function App() {
       />
       <Route
         path="/"
-        element={isAuthenticated ? <ChatPage /> : <Navigate to="/auth" />}
+        element={isAuthenticated ? <ChatPage /> : <Navigate to="/" />}
       />
 
       {/* Wildcard fallback route */}
