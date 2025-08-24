@@ -1,10 +1,22 @@
+# fastapi
+# uvicorn
+# motor
+# passlib[bcrypt]
+# python-jose
+# pydantic
+# requests
+# fpdf
+# PyJWT
+# python-dateutil
+
+
 fastapi
-uvicorn
+uvicorn[standard]
 motor
 passlib[bcrypt]
-python-jose
-pydantic
+python-jose[cryptography]
+pydantic[email]
 requests
 fpdf
-PyJWT
 python-dateutil
+python-dotenv

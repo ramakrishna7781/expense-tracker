@@ -32,7 +32,7 @@ DB_NAME = os.getenv("DB_NAME")
 JWT_SECRET = os.getenv("JWT_SECRET")
 
 # Import routers
-from app.routers import auth_routes, expense_routes, pdf_routes, genai_routes
+from .routers import auth_routes, expense_routes, pdf_routes, genai_routes
 
 # Initialize FastAPI app
 app = FastAPI(title="AI Expense Tracker")
